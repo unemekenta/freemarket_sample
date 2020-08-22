@@ -1,0 +1,52 @@
+@import "./variables";
+
+  .usersMypage__contents__wrapper__right__like {
+    width: 100%;
+    background-color: $main_white;
+    padding: 5px 0;
+    border-bottom: $body_background-color 1px solid;
+    & p {
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+    }
+
+
+    &__contents {
+      width: 100%;
+      display: block;
+      background-color: $body_background-color;
+      border: none;
+    }
+    &__btns {
+      background-color: $body_background-color;
+      padding-top: 50px;
+      height: 100px;
+      width: 100%;
+      &__btn {
+        list-style: none;
+        float: left;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 42px;
+        text-align: center;
+        & a {
+          display: block;
+          width: 42px;
+          height: 42px;
+          background-color: $main_white;
+          border: $main_gray 1px solid;
+          border-radius: 4px;
+
+          &:hover {
+            background-color: darken($main_white, 5%);
+          }
+
+        }
+        &--right {
+          float: right;
+        }
+      }
+    }
+  }
+

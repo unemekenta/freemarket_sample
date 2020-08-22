@@ -1,0 +1,74 @@
+.default-container
+  = render 'layouts/notifications'
+  = render './products/header'
+  - breadcrumb :mypage
+  = render 'layouts/breadcrumbs'
+
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
+
+    .usersMypage__contents__wrapper__right
+      .usersMypage__contents__wrapper__right__profile
+        .usersMypage__contents__wrapper__right__profile__image
+          - if current_user.attributes["photo"] == "0"
+            = image_tag "mercari_user.png"
+          - else
+            = image_tag current_user.photo.url
+
+        .usersMypage__contents__wrapper__right__profile__name
+          =current_user.nickname
+        %ul
+          %li
+            %span 評価
+            #{Evaluation.group(:seller_id).size[current_user.id].to_i}
+          %li
+            %span 出品数
+            #{Product.group(:seller_id).size[current_user.id].to_i}
+
+
+      .usersMypage__contents__wrapper__right__tabs
+        .usersMypage__contents__wrapper__right__tabs__tab
+          %input{id: "user-notice", type: "radio", name: "tab1_item", checked: "checked"}
+          %label{class: "usersMypage__contents__wrapper__right__tabs__tab__label", for: "user-notice"}
+            お知らせ
+          %input{id: "user-todos", type: "radio", name: "tab1_item"}
+          %label{class: "usersMypage__contents__wrapper__right__tabs__tab__label", for: "user-todos"}
+            やることリスト
+          
+          #user-notice-content.usersMypage__contents__wrapper__right__tabs__contents
+            %ul
+              - 5.times do
+                = render "info"
+              %li.usersMypage__contents__wrapper__right__tabs__contents--last
+                = link_to "一覧を見る", notification_user_path(current_user)
+
+          #user-todos-content.usersMypage__contents__wrapper__right__tabs__contents
+            %ul
+              = render "info-none"
+
+        .usersMypage__contents__wrapper__right__purchesed-items
+          購入した商品
+        .usersMypage__contents__wrapper__right__tabs__tab
+          %input{id: "under-deal", type: "radio", name: "tab2_item", checked: "checked"}
+          %label{class: "usersMypage__contents__wrapper__right__tabs__tab__label", for: "under-deal"}
+            取引中
+          %input{id: "past-deal", type: "radio", name: "tab2_item"}
+          %label{class: "usersMypage__contents__wrapper__right__tabs__tab__label", for: "past-deal"}
+            過去の取引
+          
+          
+          #under-deal-content.usersMypage__contents__wrapper__right__tabs__contents
+            %ul
+              = render "info-none"
+
+          #past-deal-content.usersMypage__contents__wrapper__right__tabs__contents
+            %ul
+              - 5.times do
+                = render 'info'
+            
+              %li.usersMypage__contents__wrapper__right__tabs__contents--last
+                = link_to "一覧を見る", purchased_user_path(current_user)
+
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'

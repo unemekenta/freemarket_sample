@@ -1,0 +1,58 @@
+@import "variables";
+
+.line-btn {
+    color: $main_white;
+    background-color: #1dcd00;
+    border-radius: 5%;
+    font-size: 21px;
+    width: 160px;
+    height: 80px;
+    position: fixed;
+    right: 30px;
+    top: 10px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    z-index: 5;
+
+    &__text {
+        margin-top: 23px;
+
+        a {
+            text-decoration: none;
+            color: $main_white;
+        }
+    }
+
+    &__icon {
+        font-size: 60px;
+    }
+}
+
+.sell-btn {
+    color: $main_white;
+    background-color: $btn_color;
+    border-radius: 50%;
+    font-size: 21px;
+    width: 160px;
+    height: 160px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+
+    &__text {
+        margin-top: 23px;
+
+        a {
+            text-decoration: none;
+            color: $main_white;
+        }
+    }
+
+    &__icon-camera {
+        font-size: 60px;
+    }
+}

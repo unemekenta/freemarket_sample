@@ -1,0 +1,94 @@
+@mixin slide-banner-owl-item-background($background-image) {
+  background: image-url($background-image);
+  background-position: center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
+@mixin slide-banner-owl-nav-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-23px);
+  transform: translateY(-23px);
+  i {
+    color: #ccc;
+  }
+}
+
+
+.slide-banner {
+  height: 200px;
+  overflow: hidden;
+  position: absolute;
+
+  &__link {
+    display: block;
+    &--natsukashi {
+      @include slide-banner-owl-item-background("mercari_top.png");
+    }
+
+    &--new-life {
+      @include slide-banner-owl-item-background("index_keyvisual.png");
+    }
+
+    &--bokurano-heisei {
+      background-image:url("https://storage.googleapis.com/prd-about-asset/2019/10/4741ed2b-ogp.png");
+      background-position: center;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  & .owl-prev {
+    @include slide-banner-owl-nav-btn;
+    left: 60px;
+  }
+
+  & .owl-next {
+    @include slide-banner-owl-nav-btn;
+    right: 60px;
+  }
+
+  & .owl-dots {
+    margin: -30px;
+    text-align: center;
+  }
+
+  & .owl-dot {
+    position: relative;
+    background: white !important;
+    opacity: 0.4;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    min-height: 12px;
+    margin-right: 15px;
+    &.active {
+      opacity: 1;
+      background: rgba(0,0,0,0.5) !important;
+    }
+  }
+
+  & .owl-stage-outer, .owl-stage, .owl-item, .owl-item>a {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 1068px) {
+  .slide-banner {
+    height: 390px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1068px) {
+  .slide-banner {
+    height: 290px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slide-banner .owl-dots {
+    display: none;
+  }
+}

@@ -1,0 +1,129 @@
+%header.header
+  .header-wrapper
+    .header__top
+      %h1
+        = link_to root_path do
+          = image_tag "mercari_logo_horizontal.png", class: 'header__top__logo'
+
+
+      = search_form_for(@q, url: search_products_path, local: true, class: "header__top__form") do |f|
+        = f.search_field :name_has_every_term, value: "#{@search_words}", class: "form-default", placeholder: "何かお探しですか？"
+        = button_tag  type: "submit", class: "header__top__form__icon" do
+          = fa_icon "search"
+
+    .header__menu-box
+      .header__menu-box--left
+        %ul
+          %li.header__menu-box--left__category
+            = link_to category_index_path do
+              = fa_icon "list-ul", class: 'header__menu-box--left__icon'
+              カテゴリーから探す
+            %ul.header__menu-box--left__parents
+              %li.header__menu-box--left__parents__parent
+                = link_to "レディース", category_path(id: 1)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children1, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "メンズ", category_path(id: 2)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children2, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "ベビー・キッズ", category_path(id: 3)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children3, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "インテリア・住まい・小物", category_path(id: 4)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children4, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "本・音楽・ゲーム", category_path(id: 5)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children5, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "おもちゃ・ホビー・グッズ", category_path(id: 6)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children6, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "コスメ・香水・美容", category_path(id: 7)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children7, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "家電・スマホ・カメラ", category_path(id: 8)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children8, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "スポーツ・レジャー", category_path(id: 9)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children9, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "ハンドメイド", category_path(id: 10)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children10, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "チケット", category_path(id: 11)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children11, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "自転車・オートバイ", category_path(id: 12)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children12, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "その他", category_path(id: 13)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children13, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "カテゴリ一覧", category_index_path
+                
+                
+            
+          %li.header__menu-box--left__brand
+            = link_to root_path do
+              = fa_icon "tag", class: 'header__menu-box--left__icon'
+              ブランドから探す
+            %ul.header__menu-box--left__brand__list
+              %li
+                = link_to "シャネル", brand_path(id: 1)
+              %li
+                = link_to "ナイキ", brand_path(id: 2)
+              %li
+                = link_to "ルイ ヴィトン", brand_path(id: 3) 
+              %li
+                = link_to "シュプリーム", brand_path(id: 4)
+              %li
+                = link_to "アディダス", brand_path(id: 5)
+              %li
+                = link_to "ブランド一覧", root_path 
+
+
+      - if user_signed_in?
+        .header__menu-box--right
+          %ul
+            %li.header__menu-box--right__list
+              = link_to like_show_user_path(current_user) do
+                = fa_icon "heart-o", class: 'header__menu-box--right__list__icon'
+                いいね！一覧
+            
+            %li.header__menu-box--right__list
+              = link_to notification_user_path(current_user) do
+                = fa_icon "bell-o", class: 'header__menu-box--right__list__icon'
+                お知らせ
+              
+                .header__menu-box__counter
+            %li.header__menu-box--right__list
+              = link_to todo_user_path(current_user) do
+                = fa_icon "check", class: 'header__menu-box--right__list__icon'
+                やることリスト
+          
+            %li.header__menu-box--right__list
+              = link_to mypage_user_path(current_user.id) do
+
+                - if current_user.attributes["photo"] == "0"
+                  = image_tag "/images/mercari_user.png", class: 'header__menu-box--right__list__photo'
+                - else
+                  = image_tag current_user.photo.url, class: 'header__menu-box--right__list__photo'
+                マイページ
+      - else
+        .header__menu-box--right
+          .header__menu-box--right__user-btn
+            = link_to "新規会員登録", step1_users_path, class: 'sign-up-btn'
+            = link_to "ログイン", new_user_session_path, class: 'user-login-btn'

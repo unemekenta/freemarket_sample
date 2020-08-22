@@ -1,0 +1,16 @@
+.default-container
+  = render './products/header'
+  - breadcrumb :logout
+  = render 'layouts/breadcrumbs'
+
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
+
+    .usersMypage__contents__wrapper__right
+      .usersMypage__contents__wrapper__right__logout
+        = link_to "ログアウト", destroy_user_session_path, method: "delete",  class: "usersMypage__contents__wrapper__right__logout__btn"
+
+          
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'

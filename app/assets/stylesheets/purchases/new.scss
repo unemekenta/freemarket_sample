@@ -1,0 +1,288 @@
+//import元は後日修正予定
+@import "../new";
+
+.single-container {
+  margin: 0;
+  padding: 0;
+  display: block;
+
+  .purchase-container {
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+
+    &__head {
+      padding: 16px;
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 1.5;
+      text-align: center;
+      font-family: $font-family;
+      color: rgb(51, 51, 51);
+    }
+
+    &__product__main {
+      padding: 24px 12.5% 0;
+      border-top: 1px solid #f5f5f5;
+
+      &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 320px;
+        margin: 0 auto;
+
+        &__buy-item-image {
+          img {
+            width: 64px;
+            opacity: 1;
+          }
+        }
+
+        &__buy-item-name {
+          width: calc(100% - 80px);
+          margin: 0 0 0 16px;
+          text-align: left;
+          font-size: 16px;
+          line-height: 1.5;
+          font-weight: 600;
+        }
+
+        &__buy-form {
+          width: 100%;
+
+          &__buy-price {
+            text-align: center;
+            margin: 8px 0 0;
+            line-height: 1.5;
+            font-size: 22px;
+            font-weight: 600;
+
+            &__item-shipping-fee {
+              margin: 0 0 0 8px;
+              font-size: 14px;
+              font-weight: 400;
+              display: inline-block;
+            }
+          }
+
+          &__pointbutton {
+            margin: 16px 0 0;
+            list-style: none;
+
+            &__box {
+              background: #ccc;
+              padding: 14px;
+              border: 1px solid #ccc;
+              text-align: center;
+            }
+
+            &__box--point {
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              cursor: pointer;
+              text-align: center;
+              font-weight: 600;
+
+              &--prohibitted {
+                background: darken($main_gray, 20%);
+                margin: 8px 0 0;
+                border: 1px solid $main_gray;
+                color: #fff;
+                width: 100%;
+                line-height: 48px;
+                font-size: 14px;
+                cursor: not-allowed;
+                text-align: center;
+                font-weight: 600;
+              }
+            }
+          }
+
+          &__price {
+            width: 100%;
+            list-style: none;
+            font-family: $font-family;
+
+            &__detail {
+              display: flex;
+              font-size: 18px;
+              font-weight: 600;
+              font-family: $font-family;
+
+              &__head {
+                width: 50%;
+                text-align: left;
+                padding: 16px 0;
+              }
+
+              &__yen {
+                width: 50%;
+                text-align: right;
+                padding: 16px;
+                font-size: 28px;
+              }
+
+              &__prohibitted {
+                color: $main_red;
+                font-size: 14px;
+              }
+            }
+          }
+
+          &__submitbutton {
+            margin: 8px 0 0;
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+
+            &--prohibitted {
+              background: darken($main_gray, 20%);
+              margin: 8px 0 0;
+              border: 1px solid $main_gray;
+              color: #fff;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              cursor: not-allowed;
+              text-align: center;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    &__deliver {
+      margin: 40px 0 0;
+      padding: 24px 12.5% 0;
+      border-top: 1px solid #f5f5f5;
+
+      &__inner {
+        max-width: 320px;
+        margin: 0 auto;
+
+        &__head {
+          font-size: 14px;
+          font-family: $font-family;
+          font-weight: bold;
+        }
+
+        &__address {
+          margin: 8px 0 0;
+          font-size: 14px;
+          line-height: 1.4;
+          font-style: normal;
+        }
+
+        &__change-button {
+          display: block;
+          color: #0099e8;
+          text-decoration: none;
+          text-align: right;
+
+          span {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+
+    &__payment {
+      padding: 24px 12.5% 40px;
+      margin: 40px 0 0;
+      border-top: 1px solid #f5f5f5;
+
+      &__inner {
+        max-width: 320px;
+        margin: 0 auto;
+
+        &__head {
+          font-size: 14px;
+          font-family: $font-family;
+          font-weight: bold;
+        }
+
+        &__info {
+          margin: 8px 0 0;
+          font-size: 14px;
+          line-height: 1.4;
+        }
+
+        &__logo {
+          margin: 0;
+          padding: 0;
+        }
+
+        &__change-button {
+          display: block;
+          color: #0099e8;
+          text-decoration: none;
+          text-align: right;
+
+          span {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 14px;
+          }
+        }
+      }
+      #done_overlay {
+        display: none;
+        z-index: 1;
+        width: 500px;
+        position: fixed;
+        top: 130px;
+        left: 0;
+        background-color: $main_white;
+        border: 1.5px solid $main_red;
+        border-radius: 8px;
+        .done_overlay__wrapper {
+          padding: 30px 70px 30px 70px;
+          & h2 {
+            margin-bottom: 30px;
+            font-size: 20px;
+          }
+          &__product {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: row;
+            &__info {
+              width: 60%;
+              & p {
+                margin-bottom: 10px;
+              }
+            }
+            &__image {
+              width: 40%;
+              & img {
+                width: 100px;
+              }
+            }
+          }
+          &__btn {
+            color: $main_blue;
+            display: inline-block;
+            &:after {
+              content: "\f105";
+              font-family: FontAwesome;
+              font-size: 18px;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

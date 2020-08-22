@@ -1,0 +1,6 @@
+.default-container
+  = render './products/header'
+  - breadcrumb :category, @category_breadcrumb
+  = render 'layouts/breadcrumbs'
+  = render 'categories'
+
