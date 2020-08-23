@@ -244,6 +244,7 @@ GEM
     owlcarousel-rails (2.2.3.5)
     payjp (0.0.7)
       rest-client (~> 2.0)
+    pg (1.2.3)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     pry (0.12.2)
@@ -426,6 +427,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   owlcarousel-rails
   payjp
+  pg
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
