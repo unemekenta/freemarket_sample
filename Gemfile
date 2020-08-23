@@ -52,7 +52,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'shoulda-callback-matchers'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -79,7 +78,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
   gem 'unicorn', '5.4.1'
-  gem 'pg'
 end
 
 # production, development and test
