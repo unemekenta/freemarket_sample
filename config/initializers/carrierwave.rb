@@ -8,12 +8,14 @@ if Rails.env.production?
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: Rails.application.secrets.aws_access_key_id,
-      aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
+      # aws_access_key_id: Rails.application.secrets.aws_access_key_id,
+      # aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
+      aws_access_key_id: Rails.application.credentials.aws[:AWS_ACCESS_KEY_ID],
+      aws_secret_access_key: Rails.application.credentials.aws[:AWS_SECRET_ACCESS_KEY],
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = 'freemarket-sample-0728b'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-sample-0728b'
+    config.fog_directory  = 'freemarket-sample'
+    config.asset_host = ''
   end
 end
